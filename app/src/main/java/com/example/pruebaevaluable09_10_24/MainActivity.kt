@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
+
+
     fun main() {
-        f1(1.0, -3.0, 2.0, { x1, x2, _ -> kotlin.math.abs(x1) + kotlin.math.abs(x2) }) { a, b, c ->
-            if (a == 0.0 && b == 0.0 && c == 0.0) 1.0 else a * b * c
+        val array = Array(10) { it.toDouble() }
+
+        val sumatorio = f2(array) { arr ->
+            arr.sum()
         }
+
+        println("Sumatorio del array: $sumatorio")
     }
     fun ecuacionSegundoGrado(a:Double, b:Double, c:Double): Array<Double>{
         val discriminante = b * b - 4 * a * c
@@ -40,6 +46,9 @@ class MainActivity : AppCompatActivity() {
         println("Resultado de la lambda: $lambdaResultado")
 
         return operacionResultado
+    }
+    fun f2(array: Array<Double>, sumOperation: (Array<Double>) -> Double): Double {
+        return sumOperation(array)
     }
 
 
